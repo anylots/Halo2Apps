@@ -7,7 +7,7 @@ use halo2_proofs::{
     poly::Rotation,
 };
 
-/// ///This circuit checks whether the sum of the two witness values in the cell is equal to the other given value.
+///This circuit checks whether the sum of the two witness values in the cell is equal to the other given value.
 ///
 ///        value  value   |    q_sum_check
 ///       ------------------------------
@@ -43,7 +43,7 @@ impl<F: FieldExt, const SUM: usize> SumCheckConfig<F, SUM> {
             let b = meta.query_advice(b, Rotation::cur());
 
             // Given a sum R and two value v, returns the expression
-            // If equal, a+b - c should=0
+            // If equal, a+b-c should=0
             let sum_check = |sum: usize, a: Expression<F>, b: Expression<F>| {
                 a + b - Expression::Constant(F::from(sum as u64))
             };
@@ -84,12 +84,7 @@ impl<F: FieldExt, const SUM: usize> SumCheckConfig<F, SUM> {
 
 #[cfg(test)]
 mod tests {
-    use halo2_proofs::{
-        circuit::floor_planner::V1,
-        dev::{FailureLocation, MockProver, VerifyFailure},
-        pasta::Fp,
-        plonk::{Any, Circuit},
-    };
+    use halo2_proofs::{circuit::floor_planner::V1, dev::MockProver, pasta::Fp, plonk::Circuit};
 
     use super::*;
 
@@ -139,10 +134,9 @@ mod tests {
         }
     }
 
-
     #[cfg(feature = "dev-graph")]
     #[test]
-    fn print_sum_check_1() {
+    fn print_sum_check() {
         use plotters::prelude::*;
 
         let root = BitMapBackend::new("sum-check-1-layout.png", (1024, 3096)).into_drawing_area();

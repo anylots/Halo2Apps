@@ -11,9 +11,8 @@ cargo build
 Run examples
 ```
 cargo test -- --nocapture test_sum_check
-
 ```
 Plot the circuit layout
 ```
-cargo test --all-features -- --nocapture print_range_check_1
+cargo test --all-features -- --nocapture print_sum_check
 ```
